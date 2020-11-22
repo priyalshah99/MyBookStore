@@ -1,0 +1,59 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar" />
+	
+	<div class="container">
+		<div class="table-responsive">
+			<table id="orderListTable" class="table table-bordered table-hover table-striped">
+				<thead>
+					<tr>
+						<th>Order ID</th>
+						<th>Order Date</th>
+						<th>Shipping Method</th>
+						<!-- <th>Shipping Date</th> -->
+						<th>Order Total</th>
+						<th>User ID</th>
+						<th>User Email</th>
+						<th>State</th>
+						<th>City</th>
+						<th>PIN Code</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr data-th-each="order : ${orderList}">
+
+						<td th:text="${order.id}"></td> 
+						<td th:text="${order.orderDate}"></td>
+						<td th:text="${order.shippingMethod}"></td>
+						<!-- <td th:text="${order.shippingDate}"></td> -->
+						<td th:text="${order.orderTotal}"></td>
+						<td th:text="${order.user.id}"></td>
+						<td th:text="${order.user.email}"></td> 
+						<td th:text="${order.shippingAddress.ShippingAddressState}"></td>
+						<td th:text="${order.shippingAddress.ShippingAddressCity}"></td>
+						<td th:text="${order.shippingAddress.ShippingAddressZipcode}"></td>
+						
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<div th:replace="common/header :: body-bottom-scripts" />
+	
+	<script>
+		$(document).ready(function() {
+			$("#orderListTable").DataTable({
+				"lengthMenu": [
+								[5,10,15,20,-1],[5,10,15,20,"All"]
+							  ]
+			});
+		});
+	</script>
+	
+</body>
+</html>

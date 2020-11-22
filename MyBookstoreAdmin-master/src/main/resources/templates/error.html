@@ -1,0 +1,20 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar" />
+		
+        <!-- 404 Error Page Start -->
+		<div class="text-center" style="font-size:25px;">
+			<u><a th:href="@{/}">BACK TO HOME PAGE</a></u>
+		</div>
+	 
+        
+		<img alt="" th:src="@{/image/404-page.jpg}"/>
+		 
+       <!-- 404 Error Page End -->
+       
+ 	<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html>

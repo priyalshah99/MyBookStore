@@ -1,0 +1,29 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="no-js">
+<head th:replace="common/header :: common-header"/>
+
+<body>
+	<div th:replace="common/header :: navbar"/>
+		
+		<hr/>			
+        <!-- 404 Error Page Start -->
+        <div class="error-text-area">
+        	<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="error-text text-center" style="font-size:xx-large;">
+							<u><a th:href="@{/}">BACK TO HOME PAGE</a></u>
+						</div>
+					</div>
+				</div>
+			</div>
+        
+			<img alt="" th:src="@{/img/404-page.jpg}">
+		</div>
+       <!-- 404 Error Page End -->
+       
+        <footer th:replace="common/header :: common-footer"/>
+
+		<div th:replace="common/header::body-bottom-scripts"/>
+
+</body>
+</html>  

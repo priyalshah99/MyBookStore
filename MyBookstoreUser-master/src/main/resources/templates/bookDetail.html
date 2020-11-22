@@ -1,0 +1,117 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="no-js">
+
+<head th:replace="common/header :: common-header"/>
+
+<body>
+
+	<div th:replace="common/header :: navbar"/>
+
+	<hr/>
+        <!-- Single Product Area Start -->
+      <form th:action="@{/shoppingCart/addItem}" method="post">
+        <input hidden="hidden" th:field="*{book.id}" />
+        <div class="single-product-area section-padding">
+            <div class="container">
+                <div class="row">
+                
+                     <div class="col-md-6 col-sm-7">
+	                     <a th:href="@{/bookshelf}">Back to All books</a><br/><br/>
+                        <div class="single-product-image-inner">
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="one">
+                                
+                                     <a class="venobox" th:href="#{adminPath}+@{/image/book/}+${book.id}+'.jpg'" data-gall="gallery" title="">
+                                        <img class="img-responsive shelf-book" th:src="#{adminPath}+@{/image/book/}+${book.id}+'.jpg'" />
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <br/><br/>
+                    
+                    <div class="col-md-6 col-sm-5">
+                        <div class="single-product-details">
+                            <h3 th:text="${book.title}"> Book Title</h3>
+                            
+                            <br/>
+                            <div class="single-product-price">
+                              &nbsp;<h2><span style="color:#db3208;">₹<span th:text="${book.ourPrice}"></span></span></h2>
+								<span style="text-decoration: line-through">₹<span th:text="${book.listPrice}"></span></span>
+							&nbsp;<span>(Save: ₹<span th:text="${#numbers.formatDecimal((book.listPrice - book.ourPrice), 0, 'COMMA', 2, 'POINT' )}"></span>)</span>
+                            </div>
+                            
+                            <div class="product-attributes clearfix">
+                            
+                                <!-- <span class="pull-left" id="quantity-wanted-p">
+									<span class="dec qtybutton">-</span>
+									<input type="text" value="1" class="cart-plus-minus-box">
+									<span class="inc qtybutton">+</span>	
+								</span> -->
+								
+								<div class="availability">
+	                               	<span th:if="*{book.inStockNumber&gt;9}">In Stock</span>
+	                                <span th:if="*{book.inStockNumber&lt;10 and book.inStockNumber&gt;0}"> Hurry up, Only 
+	                                				<span th:text="${book.inStockNumber}"> </span> left in stock!</span>
+	                                <span th:if="*{book.inStockNumber==0}">Out of Stock</span>
+	                            </div>
+								
+								&nbsp;
+								<span>Choose Quantity: &nbsp; </span>
+    							<select name="qty" class="btn btn-success">
+    								<option th:each="qty : ${qtyList}" th:value="${qty}" th:text="${qty}">
+    								</option>
+    							</select>	
+    							
+                                <span>
+   									<button type="submit" class="cart-btn btn-default">
+   										<i class="flaticon-shop"></i> Add to Cart</button>
+    							</span>
+
+    							<span th:if="${addBookSuccess}" style="color: forestgreen;font-size:22px;font-weight:bold;">
+    								<i class="fa fa-check" aria-hidden="true" style="color: forestgreen"></i>Added.
+    							</span>
+    							<span th:if="${notEnoughStock}" style="color: red;font-weight:bold;font-size:14px;">
+    								<i class="fa fa-times" aria-hidden="true"></i>Oops, only <span th:text="${book.inStockNumber}"></span> left.
+    							</span>
+    							
+    							
+    							
+    									
+                            </div>
+                            
+                            <hr/>
+                            
+                            <div class="col md-12 col-sm-12">
+                            	<h4><u>Book Details:-</u></h4>
+		    					<p><strong>Author: </strong><span th:text="${book.author}"></span></p>
+		    					<p><strong>Publisher: </strong><span th:text="${book.publisher}"></span></p>
+		    					<p><strong>Publication Date: </strong><span th:text="${book.publicationDate}"></span></p>
+		    					<p><strong>Language: </strong><span th:text="${book.language}"></span></p>
+		    					<p><strong>Category: </strong><span th:text="${book.category}"></span></p>
+		    					<p><strong>Format: </strong><span th:text="${book.format}"></span></p>
+		    					<p><strong>Pages: </strong><span th:text="${book.numberOfPages}"></span></p>
+		    					<p><strong>ISBN: </strong><span th:text="${book.isbn}"></span></p>
+		    					<p><strong>Shipping Weight: </strong><span th:text="${book.shippingWeight}"></span> Kg</p><hr/>
+		    					<p><strong>Description: </strong><span th:utext="${book.description}"></span></p>
+                            </div>
+                            
+							
+                        </div>
+                    </div> 
+                    
+                </div>
+            </div>
+        </div>
+       </form>
+        <!-- Single Product Area End -->
+		
+		
+		<footer th:replace="common/header :: common-footer"/>
+
+		<div th:replace="common/header::body-bottom-scripts"/>
+		
+	
+</body>
+</html>

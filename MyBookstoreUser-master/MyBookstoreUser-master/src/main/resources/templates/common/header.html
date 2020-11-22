@@ -1,0 +1,226 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="common-header">
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>My Bookstore</title>
+
+<!-- favicon -->
+<link rel="shortcut icon" type="image/x-icon" th:href="@{/img/faviconBook.ico}">
+<!-- Place favicon.ico in the root directory -->
+<!-- Google Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Poppins:400,700,600,500,300'
+	rel='stylesheet' type='text/css'>
+
+<!-- all css here -->
+<!-- bootstrap v3.3.6 css -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+<!-- data table -->
+<link th:href="@{/css/jquery.dataTables.min.css}" rel="stylesheet" />
+<link th:href="@{/css/dataTables.bootstrap.min.css}" rel="stylesheet" />
+
+
+<!-- animate css -->
+<link rel="stylesheet" th:href="@{/css/animate.css}">
+<!-- jquery-ui.min css -->
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}">
+<!-- meanmenu css -->
+<link rel="stylesheet" th:href="@{/css/meanmenu.min.css}">
+<!-- Font-Awesome css -->
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+<!-- pe-icon-7-stroke css -->
+<link rel="stylesheet" th:href="@{/css/pe-icon-7-stroke.css}">
+<!-- Flaticon css -->
+<link rel="stylesheet" th:href="@{/css/flaticon.css}">
+<!-- venobox css -->
+<link rel="stylesheet" th:href="@{/venobox/venobox.css}" type="text/css" media="screen" />
+<!-- nivo slider css -->
+<link rel="stylesheet" th:href="@{/lib/css/nivo-slider.css}" type="text/css" />
+<link rel="stylesheet" th:href="@{/lib/css/preview.css}" type="text/css" media="screen" />
+<!-- owl.carousel css -->
+<link rel="stylesheet" th:href="@{/css/owl.carousel.css}">
+<!-- style css -->
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<!-- responsive css -->
+<link rel="stylesheet" th:href="@{/css/responsive.css}">
+<!-- modernizr css -->
+<script th:src="@{/js/vendor/modernizr-2.8.3.min.js}"></script>
+</head>
+<body>
+
+
+<div th:fragment="navbar">
+	<!--Header Area Start-->
+	<div class="header-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2 col-sm-6 col-xs-6">
+					<div class="header-logo">
+						<a th:href="@{/}"> <img th:src="@{/img/logo.png}" alt=""></a>
+					</div>
+				</div>
+				<div class="col-md-1 col-sm-6 visible-sm  col-xs-6">
+					<div class="header-right">
+						<ul>
+							 
+							<li class="shoping-cart">
+								<a th:href="@{/shoppingCart/cart}">
+							 		<i	class="flaticon-shop"></i> 
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-9 col-sm-12 hidden-xs">
+					<div class="mainmenu text-center">
+						<nav>
+							<ul id="nav">
+								<li><a th:href="@{/}">HOME</a></li>
+								<li><a th:href="@{/bookshelf}">ALL BOOKS</a></li>
+								<li><a th:href="@{/about}">ABOUT US</a></li>
+								<li><a th:href="@{/contact}">CONTACT US</a></li>
+								
+								<li><a sec:authorize="isAnonymous()" th:href="@{/login}">MY ACCOUNT</a></li>
+								
+								<li><a sec:authorize="isAuthenticated()" th:href="@{/myProfile}">MY PROFILE</a></li>
+								<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a></li>
+
+							</ul>
+						</nav>
+					</div>
+				</div>
+
+
+				<div class="col-md-1 hidden-sm">
+					<div class="header-right">
+						<ul>
+							<li class="shoping-cart">
+								<a th:href="@{/shoppingCart/cart}">
+							 		<i class="flaticon-shop"></i> 
+								</a> 
+                            </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--Header Area End-->
+
+
+	<!-- Mobile Menu Start -->
+	<div class="mobile-menu-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="mobile-menu">	
+						<nav id="dropdown">
+							<ul>
+							
+								<li><a th:href="@{/}">HOME</a></li>
+								<li><a th:href="@{/bookshelf}">ALL BOOKS</a></li>
+								<li><a th:href="@{/about}">ABOUT US</a></li>
+								<li><a th:href="@{/contact}">CONTACT US</a></li>
+								
+								<li><a sec:authorize="isAnonymous()" th:href="@{/login}">MY ACCOUNT</a></li>
+								
+								<li><a sec:authorize="isAuthenticated()" th:href="@{/myProfile}">MY PROFILE</a></li>
+								<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a></li>
+								
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Mobile Menu End -->
+
+</div>
+
+
+
+	<!-- Footer Area Start -->
+	<footer th:fragment="common-footer">
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="footer-bottom-left pull-left">
+							<p>
+								Copyright &copy; 2020 <span><a th:href="@{/}">Online Book
+										Store</a></span>. All Rights Reserved.
+							</p>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="footer-bottom-right pull-right">
+							<img th:src="@{/img/paypal.png}" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer Area End -->
+
+
+
+
+
+
+
+
+
+
+<div th:fragment="body-bottom-scripts">
+	<!-- all js here -->
+	<!-- jquery latest version -->
+	<script th:src="@{/js/vendor/jquery-1.12.0.min.js}"></script>
+	<!-- bootstrap js -->
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<!-- owl.carousel js -->
+	<script th:src="@{/js/owl.carousel.min.js}"></script>
+	<!-- jquery-ui js -->
+	<script th:src="@{/js/jquery-ui.min.js}"></script>
+	<!-- jquery Counterup js -->
+	<script th:src="@{/js/jquery.counterup.min.js}"></script>
+	<script th:src="@{/js/waypoints.min.js}"></script>
+	<!-- jquery countdown js -->
+	<script th:src="@{/js/jquery.countdown.min.js}"></script>
+	<!-- jquery countdown js -->
+	<script type="text/javascript" th:src="@{/venobox/venobox.min.js}"></script>
+	
+	<!-- data table -->
+	<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+		
+	<script th:src="@{/js/scripts.js}"></script>
+	
+	
+	<!-- jquery Meanmenu js -->
+	<script th:src="@{/js/jquery.meanmenu.js}"></script>
+	<!-- wow js -->
+	<script th:src="@{/js/wow.min.js}"></script>
+	<script>
+		new WOW().init();
+	</script>
+	<!-- scrollUp JS -->
+	<script th:src="@{/js/jquery.scrollUp.min.js}"></script>
+	<!-- plugins js -->
+	<script th:src="@{/js/plugins.js}"></script>
+	<!-- Nivo slider js -->
+	<script th:src="@{/lib/js/jquery.nivo.slider.js}" type="text/javascript"></script>
+	<script th:src="@{/lib/home.js}" type="text/javascript"></script>
+	<!-- main js -->
+	<script th:src="@{/js/main.js}"></script>
+</div>
+
+
+
+</body>
+</html>

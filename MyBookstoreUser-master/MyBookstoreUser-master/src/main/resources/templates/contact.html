@@ -1,0 +1,83 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="no-js">
+
+<head th:replace="common/header :: common-header"/>
+
+<body>
+
+	<div th:replace="common/header :: navbar"/>
+	
+		<!-- Breadcrumbs Area Start -->
+        <div class="breadcrumbs-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+					    <div class="breadcrumbs">
+					       <h2>Contact Us</h2> 
+					       <ul class="breadcrumbs-list">
+						        <li>
+						            <a title="Return to Home" th:href="@{/}">Home</a>
+						        </li>
+						        <li>Contact Us</li>
+						    </ul>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div> 
+		<!-- Breadcrumbs Area Start --> 
+		  
+		<!-- Address Information Area Start -->
+		<div class="address-info-area section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 hidden-sm">
+						<div class="address-single">
+							<div class="all-adress-info">
+								<div class="icon">
+									<span><i class="fa fa-user-plus"></i></span>
+								</div>
+								<div class="info">
+									<h3>PHONE</h3>
+									<p>(+91)9104614266</p>
+									<p>(+91)9978486115</p>
+								</div>
+							</div>
+						</div>						
+					</div>
+					<div class="col-md-4 col-sm-6">
+						<div class="address-single">
+							<div class="all-adress-info">
+								<div class="icon">
+									<span><i class="fa fa-map-marker"></i></span>
+								</div>
+								<div class="info">
+									<h3>ADDRESS</h3>
+									<p>DAIICT,Gandhinagar.</p>
+									<p>Gujarat, India.</p>
+								</div>
+							</div>
+						</div>						
+					</div>
+					<div class="col-md-4 col-sm-6">
+						<div class="address-single no-margin">
+							<div class="all-adress-info">
+								<div class="icon">
+									<i class="fa fa-envelope"></i>
+								</div>
+								<div class="info">
+									<h3>E-MAIL</h3>
+									<p>bookstore1999ap@gmail.com</p>
+								</div>
+							</div>
+						</div>					
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Address Information Area End -->
+				
+		<footer th:replace="common/header :: common-footer"/>
+
+		<div th:replace="common/header::body-bottom-scripts"/>
+    </body>
+</html>

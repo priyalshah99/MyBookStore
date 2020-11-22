@@ -1,0 +1,61 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="no-js">
+
+<head th:replace="common/header :: common-header"/>
+
+<body>
+
+	<div th:replace="common/header :: navbar"/>
+	
+        <!-- Breadcrumbs Area Start -->
+        <div class="breadcrumbs-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+					    <div class="breadcrumbs">
+					       <h2>About Us</h2> 
+					       <ul class="breadcrumbs-list">
+						        <li>
+						            <a title="Return to Home" th:href="@{/}">Home</a>
+						        </li>
+						        <li>About Us</li>
+						    </ul>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div> 
+		<!-- Breadcrumbs Area Start --> 
+		<!-- About Us Area Start -->
+		<div class="about-us-area section-padding">
+		    <div class="container">
+                <div class="row">
+                    <div class="about-top-inner">
+                        <div class="col-md-6">
+                            <div class="about-inner">
+                                <div class="about-title">
+                                    <h2>Our Mission and vision</h2>
+                                </div>
+                                <div class="about-content">
+                                    <p>Our mission is to provide affordable books for education, entertainment, self-development and self-fulfillment. 
+                                    	We are passionate about the written word and seek to share our love of reading to help create and sustain a community of lifelong readers.</p>
+                                    <p>Our vision is to become the largest and leading book distributor in India in which reading, learning, and access to information are considered rights, not privileges.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="about-image">
+                                <img th:src="@{/img/about/1.jpg}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+		    </div>
+		</div>
+		<!-- About Us Area End -->
+		
+		<footer th:replace="common/header :: common-footer"/>
+
+		<div th:replace="common/header::body-bottom-scripts"/>
+		
+</body>
+</html>

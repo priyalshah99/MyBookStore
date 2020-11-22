@@ -1,0 +1,121 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="no-js">
+
+<head th:replace="common/header :: common-header"/>
+
+<body>
+
+	<div th:replace="common/header :: navbar"/>
+
+	<hr/>
+		<!-- Breadcrumbs Area Start --> 
+		<!-- Cart Area Start -->
+		<div class="container">
+		
+			<div class="row" style="margin-top: 10px;">
+			<div class="col-xs-12">
+				<div class="row">
+					<div class="col-xs-6 text-left">
+						<a class="btn btn-primary" th:href="@{/bookshelf}">Back to Shopping</a>
+					</div>
+					<div class="col-xs-6 text-right">
+						<a class="btn btn-success" th:href="@{/checkout(id=${shoppingCart.id})}">Proceed to Checkout</a>
+					</div>
+					
+					<br/>
+					<br/>
+					<div th:if="${notEnoughStock}" class="alert alert-danger font-weight-bold h4">
+						Oops, some of the products don't have enough stock. Please update book quantity.</div>
+					<div th:if="${emptyCart}" class="alert alert-danger font-weight-bold h4">
+						Oops,your cart is empty. 
+					</div>
+
+					<br /> <br />
+					
+					<div class="row">
+						<div class="col-xs-9">
+							<h4 style="margin-left:70px;">Books</h4>
+						</div>
+						<div class="col-xs-2">
+							<h4>Price</h4>
+						</div>
+						<div class="col-xs-1">
+							<h4>Qty</h4>
+						</div>
+					</div>
+
+					<!--**************** display products in cart ****************-->
+
+					<div class="row" th:each="cartItem : ${cartItemList}">
+						<form th:action="@{/shoppingCart/updateCartItem}" method="post">
+							<hr />
+							
+							<div class="col-xs-2">
+								<a th:href="@{bookDetail(id=${cartItem.book.id})}"> 
+									<img style="width:90px;" class="img-responsive shelf-book center-block"
+									th:src="#{adminPath}+@{/image/book/}+${cartItem.book.id}+'.jpg'" />
+								</a>
+							</div>
+							
+							<div class="col-xs-7">
+								<div style="margin-left:50px;">
+								<a th:href="@{/bookDetail?id=}+${cartItem.book.id}">
+									<h4 th:text="${cartItem.book.title}"></h4>
+								</a>
+								
+								<p th:if="${cartItem.book.inStockNumber&gt;9}" style="color: green;">In Stock</p>
+								
+								<p th:if="${cartItem.book.inStockNumber&lt;10 and cartItem.book.inStockNumber&gt;0}" style="color: green;">
+									Hurry up, Only <span th:text="${cartItem.book.inStockNumber}"></span> left in stock!
+								</p>
+								
+								<p th:if="${cartItem.book.inStockNumber==0}" style="color: darkred;">Out of Stock</p>
+									
+								<a th:href="@{/shoppingCart/removeItem?id=}+${cartItem.id}" class="btn btn-danger">Remove</a>
+								</div>
+							</div>
+
+							<div class="col-xs-2">
+								<h5 style="color: #db3208; font-size: large;"> ₹ <span th:text="${cartItem.book.ourPrice}"
+										th:style="${cartItem.book.inStockNumber}==0? 'text-decoration: line-through' : ''"></span>
+								</h5>
+							</div>
+
+							<div class="col-xs-1">
+								<input hidden="hidden" name="id" th:value="${cartItem.id}" /> 
+								<input type="number" min="0" th:max="${cartItem.book.inStockNumber}" th:id="${cartItem.id}" th:name="qty" 
+									th:disabled="${cartItem.book.inStockNumber==0}"	class="form-control cartItemQty" 
+									th:value="${cartItem.qty}" /><br/>
+								<button th:id="'update-item-'+${cartItem.id}" 
+									type="submit" class="btn btn-warning btn-sm">Update</button>
+							</div>
+						</form>
+					</div>
+
+					<div class="row">
+						<hr />
+						<h4 class="col-xs-12 text-right">
+							<strong style="font-size: large;">
+								Total Price (<span th:text="${#lists.size(cartItemList)}"></span> items):
+							</strong>
+							 
+							<span style="color: #db3208; font-size: large;">
+								₹ <span th:text="${shoppingCart.grandTotal}"></span>
+							</span>
+						</h4>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		</div>
+		
+		<hr/><br/>
+		<!-- Cart Area End -->
+        
+  		<footer th:replace="common/header :: common-footer"/>
+
+		<div th:replace="common/header::body-bottom-scripts"/>
+		
+	
+</body>
+</html>

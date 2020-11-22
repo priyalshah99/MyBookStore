@@ -1,0 +1,214 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="no-js">
+
+<head th:replace="common/header :: common-header"/>
+
+<body>
+
+	<div th:replace="common/header :: navbar"/>
+	
+		<hr/>
+		 
+      	<!-- Shop Area Start -->
+        <div class="shopping-area">
+            <div class="container">
+                <div class="row">
+                
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <div class="shop-widget">
+                        
+                            <div class="shop-widget-top">
+                            
+                                <aside class="widget widget-categories">
+                                    <h2 class="sidebar-title text-center">CATEGORY</h2>
+                                    <ul class="sidebar-menu">
+                                    
+                                        <li>
+                                            <a th:href="@{/bookshelf(category='all')}" th:classappend="${activeAll}? 'active'">
+                                               <i class="fa fa-angle-double-right"></i>
+                                                All                                          
+                                            </a>
+                                        </li>
+                           
+                                        <li>
+                                             <a th:href="@{/searchByCategory(category='Management')}" th:classappend="${activeManagement}? 'active'">
+                                               <i class="fa fa-angle-double-right"></i>
+                                                Management                                            
+                                            </a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a th:href="@{/searchByCategory(category='Fiction')}" th:classappend="${activeFiction}? 'active'">
+                                              <i class="fa fa-angle-double-right"></i>
+                                               Fiction
+                                            </a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a th:href="@{/searchByCategory(category='Engineering')}" th:classappend="${activeEngineering}? 'active'">
+                                               <i class="fa fa-angle-double-right"></i>
+                                                Engineering                                           
+                                            </a>
+                                        </li>
+                                        
+                                        
+                                        <li>
+                                            <a th:href="@{/searchByCategory(category='Programming')}" th:classappend="${activeProgramming}? 'active'">
+                                               <i class="fa fa-angle-double-right"></i>
+                                                Programming                                           
+                                            </a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a th:href="@{/searchByCategory(category='Arts &amp; Literature')}" th:classappend="${activeArtsLiterature}? 'active'">
+                                               <i class="fa fa-angle-double-right"></i>
+                                                Arts &amp; Literature                                        
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+                                </aside> 
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div class="shop-tab-area">
+
+                            
+                            <div class="tab-content">
+                            
+                                <div id="menu1" class="tab-pane fade in active">
+                                    <div class="row">
+                                    	
+						                 <div th:if="${emptyList}">
+											<h5 style="font-style: italic;">Oops, no result found. Try something else or try again later!</h5>
+										</div>
+                       
+                                    
+  					<table border="0" id="bookList">
+					<thead>
+						<tr>
+							<th></th>
+						</tr>
+					</thead>
+					
+					<tbody>
+					
+						<tr class="book-item" data-th-each="book : ${bookList}" >
+						
+							<td>
+							
+								<div th:if="${book != null}">
+									<div class="row" style="margin-bottom: 50px;">
+										<div class="col-xs-12 col-sm-5 col-md-4">
+											<a th:href="@{/bookDetail?id=}+${book.id}">
+											<img class="img-responsive shelf-book"
+												th:src="#{adminPath}+@{/image/book/}+${book.id}+'.jpg'" /></a>
+										</div>
+										
+										
+										<div class="col-xs-12 col-sm-7 col-md-8" >
+											<a th:href="@{/bookDetail?id=}+${book.id}">
+												<h3	style="color:#337ab7;" th:text="${book.title}"></h3>
+											</a> 
+											<!-- <span th:text="${book.publicationDate}"></span> -->
+											
+											<span>By <span th:text="${book.author}"></span></span>
+											<br/><br/>
+											
+
+											<a th:href="@{/bookDetail?id=}+${book.id}">
+												<span style="font-size: x-large; color: #db3208;">₹
+													<span th:text="${#numbers.formatDecimal(book.ourPrice, 0 , 'COMMA', 2, 'POINT')}"></span>
+												</span>
+											</a>
+
+											<span style="text-decoration: line-through;">₹
+												<span th:text="${#numbers.formatDecimal(book.listPrice, 0 , 'COMMA', 2, 'POINT')}"></span>
+											</span>
+
+											&nbsp;<span>(Save: ₹
+													<span th:text="${#numbers.formatDecimal((book.listPrice - book.ourPrice), 0, 'COMMA', 2, 'POINT' )}"></span>)
+												  </span>
+	
+											<br/><br/>
+											<p><span th:text="${book.format}"></span></p>
+											<!-- <p th:utext="${#strings.abbreviate(book.description, 300)}"></p> -->
+										</div>
+										
+									</div>
+								</div>
+								<hr/>
+							</td>
+						</tr>
+						
+					</tbody>
+				</table>                                  
+                                    
+                                    	
+                                        <!-- <div class="single-shop-product">
+                                            <div class="col-xs-12 col-sm-5 col-md-4">
+                                                <div class="left-item">
+                                                    <a href="single-product.html" title="East of eden">
+                                                        <img src="img/featured/1.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-7 col-md-8">
+                                                <div class="deal-product-content">
+                                                    <h4>
+                                                        <a href="single-product.html" title="East of eden">East of eden</a>
+                                                    </h4>
+                                                    <div class="product-price">
+                                                        <span class="new-price">$ 140.00</span>
+                                                        <span class="old-price">$ 120.00</span>
+                                                    </div>
+
+                                                    <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        
+
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Shop Area End -->
+
+
+		<footer th:replace="common/header :: common-footer"/>
+
+		<div th:replace="common/header::body-bottom-scripts"/>
+		
+		
+	<script>
+		$(document).ready(function() {
+			$('#bookList').DataTable({
+				"lengthMenu":[
+								[5,10,15,20,-1],[5,10,15,20,"All"]
+							 ],
+				"ordering":false,
+				stateSave:true
+			});
+			
+			$("#bookList").on('page.dt', function() {
+				$('html, body').animate({
+					scrollTop: $('#bookList').offset().top
+				}, 200);
+			});
+		});
+	</script>
+
+</body>
+</html>

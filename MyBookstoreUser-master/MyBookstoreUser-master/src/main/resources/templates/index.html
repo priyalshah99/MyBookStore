@@ -1,0 +1,236 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="no-js">
+
+<head th:replace="common/header :: common-header"/>
+
+<body>
+
+	<div th:replace="common/header :: navbar"/>
+
+	<!-- slider Area Start -->
+	<div class="slider-area">
+		<div class="bend niceties preview-1">
+			<div id="ensign-nivoslider" class="slides">
+				<img src="img/slider/a.jpg" alt="" title="#slider-direction-1" /> <img
+					src="img/slider/b.jpg" alt="" title="#slider-direction-2" />
+			</div>
+			<!-- direction 1 -->
+			<div id="slider-direction-1" class="text-center slider-direction">
+				<!-- layer 1 -->
+				<div class="layer-1">
+					<h2 class="title-1">SPEND LESS, READ MORE !</h2>
+				</div>
+				<!-- layer 2 -->
+ 				<div class="layer-2">
+						<p class="title-2">A room without books is like a body without a soul.</p>
+					</div>
+				<!-- layer 3 -->
+ 				<div class="layer-3">
+						<a th:href="@{/bookshelf}" class="title-3">SEE MORE</a>
+					</div> 
+				<!-- layer 4 -->
+				<div class="layer-4">
+					<form th:action="@{/searchBook}" method="POST" class="title-4">
+						<input type="text" name="keyword" placeholder="Enter your book title here">
+						<button type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</form>
+				</div>
+			</div>
+			<!-- direction 2 -->
+			<div id="slider-direction-2" class="slider-direction">
+				<!-- layer 1 -->
+				<div class="layer-1">
+					<h2 class="title-1">SPEND LESS, READ MORE !</h2>
+				</div>
+				<!-- layer 2 -->
+				 <div class="layer-2">
+						<p class="title-2">Good friends, good books, and a sleepy conscience: this is the ideal life.</p>
+					</div>
+				<!-- layer 3 -->
+				<div class="layer-3">
+						<a th:href="@{/bookshelf}" class="title-3">SEE MORE</a>
+				</div> 
+				<!-- layer 4 -->
+				<div class="layer-4">
+					<form th:action="@{/searchBook}" method="POST" class="title-4">
+						<input type="text" name="keyword"  placeholder="Enter your book title here">
+						<button type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- slider Area End-->
+
+
+
+	<!-- Online Banner Area Start -->
+	<div class="online-banner-area">
+		<div class="container">
+			<div class="banner-title text-center">
+				<h2>
+					ONLINE <span>BOOK STORE</span>
+				</h2>
+				<p>The Online Books Guide is the biggest big store and the
+					biggest books library in the world that has alot of the popular and
+					the most top category books presented here. Top Authors are here
+					just subscribe your email address and get updated with us.</p>
+			</div>
+			<div class="row">
+				<div class="banner-list">
+					<div class="col-md-4 col-sm-6">
+						<div class="single-banner">
+							<a th:href="@{/bookDetail?id=1}">
+							<img th:src="#{adminPath}+@{/image/book/1}+'.jpg'" alt=""/>
+							</a>
+							<div class="banner-bottom text-center">
+								<a th:href="@{/bookDetail?id=1}">TRENDING IN 2020</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-4 col-sm-6">
+						<div class="single-banner">
+							<a th:href="@{/bookDetail?id=3}">
+							<img th:src="#{adminPath}+@{/image/book/3}+'.jpg'" alt=""/>
+							</a>
+							<div class="banner-bottom text-center">
+								<a th:href="@{/bookDetail?id=3}">TRENDING IN 2020</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-4 col-sm-6">
+						<div class="single-banner">
+							<a th:href="@{/bookDetail?id=4}">
+							<img th:src="#{adminPath}+@{/image/book/4}+'.jpg'" alt=""/>
+							</a>
+							<div class="banner-bottom text-center">
+								<a th:href="@{/bookDetail?id=4}">TRENDING IN 2020</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-4 col-sm-6">
+						<div class="single-banner">
+							<a th:href="@{/bookDetail?id=5}">
+							<img th:src="#{adminPath}+@{/image/book/5}+'.jpg'" alt=""/>
+							</a>
+							<div class="banner-bottom text-center">
+								<a th:href="@{/bookDetail?id=5}">NEWLY RELEASED IN 2020</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-4 col-sm-6">
+						<div class="single-banner">
+							<a th:href="@{/bookDetail?id=7}">
+							<img th:src="#{adminPath}+@{/image/book/7}+'.jpg'" alt=""/>
+							</a>
+							<div class="banner-bottom text-center">
+								<a th:href="@{/bookDetail?id=7}">NEWLY RELEASED IN 2020</a>
+							</div>
+						</div>
+					</div>
+					 
+					 
+					<div class="col-md-4 col-sm-6">
+						<div class="single-banner">
+							<a th:href="@{/bookDetail?id=8}">
+							<img th:src="#{adminPath}+@{/image/book/8}+'.jpg'" alt=""/>
+							</a>
+							<div class="banner-bottom text-center">
+								<a th:href="@{/bookDetail?id=8}">NEWLY RELEASED IN 2020</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Online Banner Area End -->
+
+
+	<!-- Counter Area Start -->
+	<div class="counter-area section-padding text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-3 col-xs-6">
+					<div class="single-counter wow" data-wow-duration="1.5s"
+						data-wow-delay=".3s">
+						<div class="counter-info">
+							<span class="fcount"> <span class="counter">9999</span>
+							</span>
+							<h3>BOOKS SOLD</h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-6">
+					<div class="single-counter wow" data-wow-duration="1.5s"
+						data-wow-delay=".3s">
+						<div class="counter-info">
+							<span class="fcount"> <span class="counter">5555</span>
+							</span>
+							<h3>HAPPY CUSTOMERS</h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-6">
+					<div class="single-counter wow" data-wow-duration="1.5s"
+						data-wow-delay=".3s">
+						<div class="counter-info">
+							<span class="fcount"> <span class="counter">3333</span>
+							</span>
+							<h3>AUTHORS</h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-6">
+					<div class="single-counter wow" data-wow-duration="1.5s"
+						data-wow-delay=".3s">
+						<div class="counter-info">
+							<span class="fcount"> <span class="counter">7777</span>
+							</span>
+							<h3>ORDERS</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Counter Area End -->
+
+
+	<!-- News Letter Area Start -->
+	<!-- <div class="newsletter-area text-center">
+		    <div class="container">
+		        <div class="row">
+		            <div class="col-md-12">
+		                <div class="newsletter-title">
+		                    <h2>SUBSCRIBE OUR NEWSLETTER</h2>
+		                    <p>Subscribe here with your email us and get up to date.</p>
+		                </div>
+		                <div class="letter-box">
+		                    <form action="#" method="post" class="search-box">
+		                        <div>
+                                    <input type="text" placeholder="Subscribe us">
+                                    <button type="submit" class="btn btn-search">SUBSCRIBE<span><i class="flaticon-school-1"></i></span></button>
+                                </div>
+		                    </form>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div> -->
+	<!-- News Letter Area End -->
+
+
+	<footer th:replace="common/header :: common-footer"/>
+
+	<div th:replace="common/header::body-bottom-scripts" />
+
+</body>
+</html>
